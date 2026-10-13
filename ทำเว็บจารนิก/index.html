@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team AllStar | หน้าแรก - Official E-Sport Website</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; }
+        body { 
+            margin: 0; 
+            font-family: 'Rajdhani', sans-serif; 
+            background-color: #080808; 
+            color: #ffffff; 
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header & Navigation */
+        header { 
+            background: rgba(15, 15, 15, 0.95); 
+            backdrop-filter: blur(10px);
+            padding: 15px 30px; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #ffcc00; 
+            box-shadow: 0 4px 20px rgba(255,204,0,0.2); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
+        .logo-area { display: flex; align-items: center; gap: 12px; }
+        .logo-icon { font-size: 2em; color: #ffcc00; filter: drop-shadow(0 0 8px #ffcc00); }
+        header h1 { 
+            margin: 0; 
+            color: #ffcc00; 
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8em; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            text-shadow: 0 0 10px rgba(255,204,0,0.5); 
+        }
+        
+        nav { display: flex; gap: 8px; align-items: center; }
+        nav a { 
+            color: #cccccc; 
+            text-decoration: none; 
+            font-weight: 700; 
+            padding: 8px 12px; 
+            border-radius: 4px; 
+            transition: all 0.3s ease; 
+            font-size: 1.05em;
+            text-transform: uppercase;
+        }
+        nav a:hover, nav a.active { 
+            background-color: #ffcc00; 
+            color: #080808; 
+            box-shadow: 0 0 15px rgba(255,204,0,0.8); 
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle { display: none; font-size: 1.5em; color: #ffcc00; cursor: pointer; }
+
+        /* Container */
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; min-height: 60vh; }
+        h2 { 
+            color: #ffcc00; 
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2em; 
+            text-align: center; 
+            margin-bottom: 30px; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255,204,0,0.3);
+        }
+
+        /* Hero Section with Glassmorphism */
+        .hero { 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80') center/cover; 
+            padding: 120px 20px; 
+            border-radius: 12px; 
+            border: 1px solid rgba(255, 204, 0, 0.3); 
+            text-align: center; 
+            margin-bottom: 40px; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.9), inset 0 0 20px rgba(255,204,0,0.1); 
+            position: relative;
+            overflow: hidden;
+        }
+        .hero h2 { 
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.8em; 
+            margin: 0 0 15px 0; 
+            color: #fff; 
+            text-shadow: 0 0 20px rgba(255,204,0,0.8), 2px 2px 8px #000; 
+        }
+        .hero p { font-size: 1.4em; color: #ddd; margin-bottom: 30px; letter-spacing: 1px; }
+        .btn { 
+            display: inline-block; 
+            background: linear-gradient(135deg, #ffcc00, #ff9900); 
+            color: #080808; 
+            padding: 14px 35px; 
+            text-decoration: none; 
+            font-weight: 900; 
+            border-radius: 6px; 
+            transition: all 0.3s; 
+            font-size: 1.1em; 
+            text-transform: uppercase; 
+            box-shadow: 0 0 15px rgba(255,204,0,0.5);
+            font-family: 'Orbitron', sans-serif;
+        }
+        .btn:hover { 
+            background: #fff; 
+            color: #080808;
+            transform: scale(1.08); 
+            box-shadow: 0 0 25px #fff; 
+        }
+
+        /* Match Countdown Box */
+        .countdown-banner {
+            background: linear-gradient(135deg, #141414, #1f1f1f);
+            border: 1px solid #ffcc00;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+        }
+        .countdown-banner h3 { color: #ffcc00; font-family: 'Orbitron', sans-serif; margin: 0 0 10px 0; font-size: 1.5em; }
+        .match-vs { font-size: 1.2em; font-weight: bold; color: #fff; margin-bottom: 15px; }
+
+        /* Stats Section */
+        .stats-box { 
+            display: flex; 
+            justify-content: space-around; 
+            background: rgba(24, 24, 24, 0.8); 
+            backdrop-filter: blur(5px);
+            border: 1px solid #2a2a2a; 
+            border-radius: 10px; 
+            padding: 30px; 
+            margin-bottom: 40px; 
+            text-align: center; 
+            flex-wrap: wrap; 
+            gap: 20px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5); 
+        }
+        .stat-item h3 { color: #ffcc00; font-family: 'Orbitron', sans-serif; font-size: 2.8em; margin: 0 0 5px 0; text-shadow: 0 0 10px rgba(255,204,0,0.4); }
+        .stat-item p { color: #aaa; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; }
+
+        /* Grid & Cards */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; }
+        .card { 
+            background-color: #141414; 
+            border: 1px solid #2a2a2a; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        .card:hover { 
+            transform: translateY(-8px); 
+            border-color: #ffcc00; 
+            box-shadow: 0 10px 30px rgba(255,204,0,0.25); 
+        }
+        .card img { width: 100%; height: 210px; object-fit: cover; transition: transform 0.5s; }
+        .card:hover img { transform: scale(1.05); }
+        .card-body { padding: 25px; }
+        .card h3 { color: #ffcc00; font-family: 'Orbitron', sans-serif; margin: 0 0 12px 0; font-size: 1.3em; }
+
+        /* Footer */
+        footer { 
+            background-color: #050505; 
+            text-align: center; 
+            padding: 40px 20px; 
+            margin-top: 60px; 
+            color: #777; 
+            border-top: 2px solid #222; 
+        }
+        .social-icons { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; }
+        .social-icons a { color: #ffcc00; font-size: 1.5em; transition: transform 0.3s, color 0.3s; }
+        .social-icons a:hover { color: #fff; transform: scale(1.2); }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            nav { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #141414; padding: 20px; border-bottom: 2px solid #ffcc00; box-shadow: 0 10px 20px rgba(0,0,0,0.8); }
+            nav.active { display: flex; }
+            .menu-toggle { display: block; }
+            .hero h2 { font-size: 2.5em; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navbar -->
+    <header>
+        <div class="logo-area">
+            <span class="logo-icon"><i class="fa-solid fa-star"></i></span>
+            <h1>Team AllStar</h1>
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <nav id="nav-menu">
+            <a href="index.html" class="active"><i class="fa-solid fa-house"></i> หน้าแรก</a>
+            <a href="about.html"><i class="fa-solid fa-shield-halved"></i> เกี่ยวกับทีม</a>
+            <a href="roster.html"><i class="fa-solid fa-users"></i> ผู้เล่น</a>
+            <a href="achievements.html"><i class="fa-solid fa-trophy"></i> ผลงาน</a>
+            <a href="matches.html"><i class="fa-solid fa-calendar-days"></i> ตารางแข่ง</a>
+            <a href="news.html"><i class="fa-solid fa-newspaper"></i> ข่าวสาร</a>
+            <a href="gallery.html"><i class="fa-solid fa-images"></i> คลังภาพ</a>
+            <a href="shop.html"><i class="fa-solid fa-cart-shopping"></i> ร้านค้า</a>
+            <a href="sponsors.html"><i class="fa-solid fa-handshake"></i> ผู้สนับสนุน</a>
+            <a href="contact.html"><i class="fa-solid fa-envelope"></i> ติดต่อ</a>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h2>THE STAR NEVER FALLS</h2>
+            <p>รวมดาวเด่นระดับท็อปของวงการ E-sport สู่ชัยชนะที่ไร้ขีดจำกัด</p>
+            <a href="roster.html" class="btn"><i class="fa-solid fa-gamepad"></i> พบกับผู้เล่นของเรา</a>
+        </div>
+
+        <!-- Next Match Countdown Banner -->
+        <div class="countdown-banner">
+            <h3><i class="fa-solid fa-stopwatch"></i> NEXT MATCH BATTLE</h3>
+            <div class="match-vs">Team AllStar <span style="color:#ffcc00;">VS</span> Team Phoenix (Pro League S10)</div>
+            <p style="color: #aaa; margin: 0;">15 ตุลาคม 2026 | ถ่ายทอดสดทุกช่องทางหลักเวลา 18:00 น.</p>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-box">
+            <div class="stat-item">
+                <h3>15+</h3>
+                <p>Tournament Wins</p>
+            </div>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Team Dedication</p>
+            </div>
+            <div class="stat-item">
+                <h3>5M+</h3>
+                <p>Fan Community</p>
+            </div>
+        </div>
+
+        <!-- Latest News & Highlights -->
+        <h2><i class="fa-solid fa-bolt"></i> ไฮไลท์และข่าวสารล่าสุด</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80" alt="News">
+                <div class="card-body">
+                    <h3>เตรียมลุยศึก Pro League Season 10</h3>
+                    <p style="color: #aaa;">ความพร้อมเต็มร้อยของทีม AllStar ในการสู้ศึกชิงแชมป์เอเชียแปซิฟิกเดือนนี้...</p>
+                    <a href="news.html" style="color: #ffcc00; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 10px;">อ่านเพิ่มเติม &rarr;</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80" alt="Match">
+                <div class="card-body">
+                    <h3>แมตช์ถัดไป: VS Team Phoenix</h3>
+                    <p style="color: #aaa;">ร่วมส่งแรงใจเชียร์พวกเราในวันที่ 15 ตุลาคมนี้ ถ่ายทอดสดทุกช่องทางหลัก...</p>
+                    <a href="matches.html" style="color: #ffcc00; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 10px;">ดูตารางแข่งทั้งหมด &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-discord"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-twitch"></i></a>
+        </div>
+        <p>&copy; 2026 ทีม AllStar E-sport. สงวนลิขสิทธิ์ทั้งหมด | The Star Never Falls</p>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('nav-menu');
+            nav.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
